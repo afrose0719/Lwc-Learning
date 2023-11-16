@@ -1,0 +1,93 @@
+<template>
+    <!-- Naming conventions in lwc
+    camelCase: Each word in the middle of the respective phrase begins with a capital letter.
+    PascalCase: Its same like Camel Case where first letter always is capitized
+    kebab-case: Respective phrase will be transferred to all lowercase with hyphen(-) separting words
+    Example
+    **********************************************************************************************
+    |Case Name       |camelCase          | PascalCase            |kebab-case                       |  
+    **********************************************************************************************
+    Example          | helloWorld        | HelloWorld            | hellow-words
+    _____________________________________________________________________________________________
+    Usage           | component Name      | Component class Name | Component reference and
+                                                                    HTML attribute Name
+    ______________________________________________________________________________________________  
+                                                               -->
+
+   <!-- App Creation and component Creation Deployment  
+        App Creation -> Page Creation ->Component Deployment -> Component Assignment
+        To create App - Open Org -> setup -Quick Find- App Manager
+        To Create Page -  App Builder -->
+        
+        <div>Hello World</div>
+
+        <!-- 02. Local Properties and Data- Binding
+        // only available inside of this component you can't access outside this class
+    name //undefined 
+    age=30;
+    fullName='Salesforce Developer';
+    showData =false;
+    details={
+        name:'dummy',
+        place:'Vellore'
+    }
+    userList=['User A','User B','User C'] 
+    
+    Data Binding
+    Data Binding in the Lightning web component is the synchronization between the controller and the template.
+-->
+    <div>{fullName}</div>
+
+    <!-- Things to remember
+    1.In template we can access property value directly if it's primitive or object
+    2. Dot Notation is used to access the property from an object
+    //for example this is allowed usersName ={Name:'Afrose'} in template
+    <div>{userName.Name}</div>
+    3. LWC doesn't allow computed expression like Name[2] or {2+2}
+    ex. userName =['afrose']
+    <div>{userName[0]}</div>
+    4. The property in {} must have a valid Javascript identifier or member expression. Like {name} or {user.name}
+    5. Avoid adding space arount the property, for example { data } -->
+
+    <!-- 03. Methods And two way Data Binding
+    example
+    getName(){
+
+    }
+    Two way Data Binding
+    1.controller pass the fullName and title property value to template
+    2. Any Change in the template pass value back to the  controller and update the controller property -->
+   
+
+    <lightning-card  title="Two way Data Binding">
+        <div class="slds-m-around_medium">
+            <lightning-input type="text" label="Enter Course Name" onkeyup={changeHandler}></lightning-input>
+        <div>{fullName} is learning {title}</div>
+        </div> 
+    </lightning-card>
+
+    <!-- @track properties
+    when a field contains an object or an array, there's a limit to the depth of  changes that are tracked.
+    to tell the framework to observe changes to the properties of an object or to the elements of an array,
+    decorate the field with @track.
+
+    Normal Property vs @track property
+    Without using @track, the framework observes changes that asssign a new value to a field/property. If the new
+    value is not === to the previous value, the component rerenders -->
+
+    <lightning-card  title="@track properties">
+        <div class="slds-var-m-around_medium">
+            <lightning-input type="text" label="Enter Course Name" onkeyup={trackHandler}></lightning-input>
+        <div>{fullName} is learning {details.name}</div>
+        </div> 
+    </lightning-card>
+
+    <lightning-card  title="getter Demo">
+        <div class="slds-var-m-around_medium">
+           <div>First User Name is {firstUser}</div>
+           <div>{multiply}</div>
+        </div>
+    </lightning-card>
+
+   
+</template>
