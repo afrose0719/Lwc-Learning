@@ -1,0 +1,31 @@
+<template>
+    <!-- Component Composition
+    Composition is Adding Component within the body of another  component
+        Composition enables you to build complex components from simpler building-block components
+    How to refer child components name in parent components    
+    1. childComponent <c-child-component></c-child-component>
+    2. childComponentDemo <c-child-component-demo></c-child-component-demo>
+    3. sampleDemoLWC   <c-sample-demo-l-w-c></c-sample-demo-l-w-c>
+
+    Replace capital letter with small letter and prefixed with hyphen
+    Try to avoid continuous capital letters in your componet name. -->
+    <lightning-card title="Parent Component">
+        <div class="slds-var-m-around_medium">
+            <h1>Hello from parent componet</h1>
+            <c-dhello-child-component></c-dhello-child-component>
+        </div>
+    </lightning-card>
+
+    <!-- What is DOM
+    Document Object Model(DOM) is a programming API for HTML and XML documents.
+    it defines the logical structure of documents and the way a document is accessed and manipulated.
+    Basically, The DOM is a tree structure representation of web page
+    
+    What is Shadow DOM
+    Shadow DOM brings encapsulation concept to HTML which enables you to link a hidden separated DOM to an element.
+    
+    Benefits of Shadow DOM - DOM queries, event propagation and CSS rules cannot go to the other side of the shadow 
+    boundry, thus creating encapsulation. -->
+
+    
+</template>
