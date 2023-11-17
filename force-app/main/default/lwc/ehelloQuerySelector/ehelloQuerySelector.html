@@ -1,0 +1,34 @@
+<template>
+    <!-- Accessing Elements in the Component
+    Accessing elements rendered by a component, use the template property
+    this.template.querySelector(selector)
+    this.template.querySelectorAll(selector)
+    element.template.querySelectorAll(selector)
+    Note ** - Don't use ID selector with querySelector
+    lwc:dom='manual'
+    Add this directive to a native HTML element to attach an HTML element as a child. -->
+    <lightning-card title="Query Selector">
+    <div class="slds-var-m-around_medium">
+        <h1>Hey i am Headings</h1>
+        <template for:each={userNames} for:item="user">
+            <div class="name" key={user}>
+                {user}
+            </div>
+        </template>
+        <div class="child" lwc:dom="manual">
+            
+        </div>
+    <button onclick={fetchDetailHandler}>Fetch details</button>
+    </div>
+</lightning-card>
+
+    CSS in LWC
+    Inline Styling
+    External CSS
+    Using Lightning Design System
+    SLDS Design Token
+    Shared CSS in LWC
+    Dynamic Styling
+    Third-party css library
+    Applying CSS across shadow DOM
+</template>
