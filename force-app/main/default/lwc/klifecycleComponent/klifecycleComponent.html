@@ -1,0 +1,123 @@
+<template>
+    <!-- Component Lifecycle Hooks
+    A lifecycle hook is a callback method triggered at a specific phase of a component instance lifecycle.
+
+    Mounting phase
+    constructor()       connectedCallback()     render() renderedCallback()
+
+    Unmounting phase
+    disconnectedCallback()
+
+    Error Phase
+    errorCallback()
+
+    render()
+    Technically render() its not lifecycle hook. it's a protected method on the lightning elements class.
+
+
+    Lightnin Web Component and Render Life Cycle
+   
+   
+    Parent Component
+    Component 
+    Life        -=>Constructor -=> public property -No-> Component Inserted  -=> connected      -=> component  -=>Any Child    ---No-=>renderedCallback    -=>Component Life 
+    Start                           to update                into DOM           callback called      rendered       component             called                cycle end
+                                         |                      ^                                                        |                  /|\
+                                        \|/                     |                                                        |                   |
+                                        Yes---------------------                                                         |                   |
+                                        update public property value                                                     |                 ChildComponent                     
+     |-------------------------------------------------------------------------------------------------------------------Yes                Lifecycle end
+     |     child component                                                                                                                    |  
+    \|/                                                                                                                                       |                  
+    ChildComponent  -=>Constructor -=>public property -No->   component    -=> connected      -=>component  -=> Any child  --No-=> rendered Callback
+    lifecycle start                     to update?          insert into DOM    callbackcalled     rendered      Component           called
+    /|\                                      |                  /|\                                                  |Yes
+     |                                       |                   |                                                   |
+     |                                       |                   |                                                   |                                 
+     |                                       Yes------------------                                                   |    
+     |                                                                                                               |
+     |                                                                                                               |    
+     |                                                                                                              \|/
+    -----------------------------------------------------------------------------------------------------------------        
+            Repeat same steps if any child is there.
+
+    Lifecycle Hooks in Mounting phase
+        constructor()
+        connectedCallback()
+        renderedCallback()
+   
+        Constructor() Method
+        
+        Point to remember
+        This hook is invoked, when a component instance is created.
+        you have to call super() first inside this
+        At this point, the component properties won't be ready yes.
+        To access the host element, use this.template
+        This method lifecycle flows from parent to child compnent.
+        we can't access child elements in the component body because they dont exist yet.
+        Don't add attributes to the host element in the constructor.   -->
+
+        <lightning-card title="LifeCycle hook parent card">
+            <div class="slds-var-m-around_medium">
+                <template if:false={ischildVisible}>
+                    <lightning-button
+                    variant="brand"
+                    label="Show Child"
+                    title="Show Child"
+                    onclick={handleClick}
+                    class="slds-m-left_x-small"></lightning-button>
+                </template>
+                <template if:true={ischildVisible}>
+                    <lightning-button
+                    variant="brand"
+                    label="Remove Child"
+                    title="Remove Child"
+                    onclick={handleClick}
+                    class="slds-m-left_x-small"></lightning-button>
+                </template>
+                    
+                    
+                <template if:true={ischildVisible}>
+                    <c-klifecycle-component-child></c-klifecycle-component-child>
+                </template>
+                   
+            </div>
+
+        </lightning-card>
+        
+        <!-- connectedCallback Method
+        points to remember
+        
+        Called when the element is inserted into a document.
+        this hook flows from parent to child
+        you can't access child elements in the component body because they dont exist yet
+        you can access the host element with this.template.
+        use it to: perform initialization tasks, such as fetch data, set up caches, or listen for events (such as publish-subscribe events)
+        do not use: connectedCallback() to change the state of a component, such as loading values or setting properties, use getters and setters instead  -->
+
+        <!-- renderedCallback Method
+        
+        Points to remember
+        Fires when a component rendering is done.
+        It can fire more than once.
+        This hook flow from chilt to parent.
+        when a component re-renders. all the expressions used in the template are reevaluated.
+
+        Do not use renderedCallback()
+       1. to change the state or update property of component
+       2. Don't update a wire adapter configuration object property in renderedCallback(), as it can result in an infinite loop. -->
+
+            <!-- disconnectedCallback Method
+            Fires when a component is removed from the DOM
+            it flows from parent to child
+            this callback method is specific to lightning web components, it isnt from the HTML custom element specification. -->
+         
+         <!-- errorCallback(err,stack) Method
+         
+         points to remember
+        this method called when a descendant component throws an error in one of its callback
+        the error argument is a javascript native error object, and the stack argument is a string.
+        this callback method is specific to lightning web component, it isnot from the HTML custom
+        element specification -->
+
+</template> 

@@ -1,0 +1,37 @@
+<template>
+
+    <!-- Render Method
+    Render is a method that tells the component which template to load based on
+    some condition, it always return the template reference.
+
+    Points to remember
+    the render() method is not technically a lifecycle hook. it is a protected method on the
+    LightningElement class.
+    Call this method to update the UI. it May be called before or after connectedCallback()
+    it's rare to call render() in a component. The main use case is to conditionally render a template. -->
+
+    <!-- When to prefere multiple template over if:true/if:false
+    if:true/if:false is recommended whenever there is small template to hide and show
+    Ideally it's always recommend to break down your component into smallest unit.
+    whenever we have a scenario in which we have same business logic but we want to render
+    a component with more than one look and feel.
+    whenever we have two design in same component but not want to mix the HTML in one file. -->
+    <lightning-card>
+    <div class="slds-var-m-around_medium">
+        <h2 class="slds-text-heading_medium slds-var-m-bottom_medium">Hey im default Template</h2>
+        <lightning-button 
+        variant="destructive"
+        label="Signup"
+        title="signup"
+        onclick={handleClick}
+        class="slds-m-left_x-small"></lightning-button>
+        <lightning-button 
+        variant="success"
+        label="Signin"
+        title="signin"
+        onclick={handleClick}
+        class="slds-m-left_x-small"></lightning-button>
+    </div>
+    
+</lightning-card>
+</template>
