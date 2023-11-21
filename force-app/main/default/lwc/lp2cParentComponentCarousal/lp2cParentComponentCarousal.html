@@ -1,0 +1,38 @@
+<template>
+     <!-- Parent to child Communication using non-primitive Data Type
+
+    Case 2 Complex Data passing
+        Parent Component
+                |
+                |
+        Passing non-primitive data to Child
+                |
+                |
+        Child Component -->
+    
+        <lightning-card title="Paren to child non-primitive data communication">
+            <div class="slds-var-m-around_medium">
+        <lightning-carousel disable-auto-scroll>
+            <template for:each={carouselDetails} for:item="item">
+                <lightning-carousel-image
+                key={item.header}
+                src = {item.src}
+                header = {item.header}
+                description = {item.description}
+                >
+            </lightning-carousel-image>
+            
+    
+            </template>
+            
+        </lightning-carousel>
+    </div>
+    </lightning-card>
+        <!-- Case 3 - Passing data to child on action at parent component
+            Parent Component 
+                    |
+            Passing data to child on
+            action at parent component
+                    |
+                child component -->
+</template>

@@ -1,0 +1,67 @@
+<template>
+    <!-- Component Communication
+    Parent to Child Communication Approaches
+    Child to Parent communication 
+    Sibling Component Communication Using PubSub
+    Communication Accross VF pages, Aura, and LWC using Lightning Message Service
+
+
+    Parent to child communication
+                Parent      Component __________________________________________________
+               /     |              \                                                   |
+              /      |                 \                                                |
+             /       |                  \---                                            | 
+           /         |                      \                                           |
+        Passing     Passing not-primitive     \                                     Calling child method from parent
+primitive data to   data to child               Passing data to child on                |
+child                |                           action at paren                        |
+        \            |                                  |                               |
+          \          |                                  |                               |    
+            \        |                                  |                               |
+              \      | _________________________________|                               | 
+                     | _________________________________________________________________|                                   
+                Child Component
+
+ @api decorator
+ 1.To make a field/property or method public, decorate it with @api decorator
+ 2. When we want to expose the property we decorate the field with @api
+ 3. An Owner component that uses the component in its HTML markup can access
+ the component's public properties via HTML attributes.
+ 4. Public properties are reactive in nature and if the value of the property changes
+ the component's template re-renders -->
+  
+ <!-- case 1 - Simple Data passing
+            Parent Component
+                    |
+            Passing primitive data to child
+                    |
+            Child Component -->
+
+
+
+    <!-- camelCase property name shoudl converted into kebab-case -->
+    <!-- Example of sime data -->
+    <lightning-input type="text" label="create title" title="create title" value={cardHeading} onkeyup={submitHandler}></lightning-input>
+    <c-lp2c-parent-component-alert message="Hurray i Got the data from parents" card-headings ={cardHeading}></c-lp2c-parent-component-alert>
+        <!-- Example of complex data -->
+    <div class="slds-var-m-around_medium">
+        <c-lp2c-parent-component-carousal carousel-details={carouselData}></c-lp2c-parent-component-carousal>
+    </div>   
+
+    <!--Example of data passing on action-->
+    <lightning-card title="Example of data passing on action">  
+        <div class="slds-var-m-around_medium">
+    <lightning-input type="number" label="Enter percentage" onkeyup={changeHandler}></lightning-input>
+    <c-lp2c-parent-component-progress progress-value={percentage} ></c-lp2c-parent-component-progress>
+</div>
+</lightning-card>
+
+        <!-- Example of calling child Method from parent-->
+        <lightning-button 
+        variant="brand" 
+        label="Reset Slider" 
+        title="Primary action" 
+        onclick={handleClick} 
+        class="slds-m-left_x-small"></lightning-button>
+        <c-lp2c-parent-component-slider></c-lp2c-parent-component-slider>
+</template>
