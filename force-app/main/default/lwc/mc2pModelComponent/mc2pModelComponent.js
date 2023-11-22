@@ -10,4 +10,8 @@ export default class Mc2pModelComponent extends LightningElement {
         });
         this.dispatchEvent(myEvent);
     }
+
+    footerHandler(){
+        console.log('footer event called');
+    }
 }

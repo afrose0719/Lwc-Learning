@@ -1,10 +1,10 @@
 <template>
     <lightning-card title="Child to Parent communication">
-        <div class="slds-var-m-around_medium">
+        <div class="slds-var-m-around_medium" onclose={closeHandler}>
            <lightning-button label="Show Modal" onclick={clickHandler}></lightning-button>
            <h1>{msg}</h1>
             <template if:true={showModal}>
-            <c-mc2p-model-component onclose={closeHandler}> </c-mc2p-model-component>
+            <c-mc2p-model-component> </c-mc2p-model-component>
         </template>
         </div>
     
@@ -19,5 +19,6 @@
             <div onclick={Y}>                           ____________________________>2nd Y will triggered and the bubbled        
                 <button onlick={X}> click me</button>       ________________________> 1st X will triggered and then bubbled
     </div>
-        this.dispatchEvent(new CustomEvent('show',{bubbles:true, details:'hello'})) -->
-</template>
+        this.dispatchEvent(new CustomEvent('show',{bubbles:true, details:'hello'})) -->    
+    
+    </template>

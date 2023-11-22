@@ -1,0 +1,28 @@
+<template>
+    <!-- Component Communication using Pubsub module
+        There are two ways to communicate between independent Components
+        1)pubsub
+        2)Lightning Messaging Service
+
+   NOTE** Use this approach, if Lightning Messaging Service not serve your purpose, It's an Old technique to communicate with
+    independent components in LWC.
+
+     ______________________________________________________________________________________________________________________                               
+    |                                                   Page                                                               | 
+    |                                                                                                                      |
+    |                                                                                                                      |     
+    |                Parent Component                                                                                      |     
+    |                       | |                                 pubsub                                                     |          
+    | Parent to child       | |           Child to parent  --------------------------   Independent Component              | 
+    |                  Child Component                                                                                     |  
+    |                                                                                                                      | 
+    |______________________________________________________________________________________________________________________|
+     -->
+    
+    <lightning-card title="Pubsub demo Component A">
+        <div class="slds-p-around_medium">
+            <lightning-input type="text" onkeyup={inputHandler} class="slds-m-bottom_medium"></lightning-input>
+            <lightning-button variant="brand" onclick={publishHandler} label="publish"></lightning-button>
+        </div>
+    </lightning-card>
+</template>
