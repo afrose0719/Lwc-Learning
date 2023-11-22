@@ -1,0 +1,52 @@
+<template>
+    <!-- child to parent communitcation
+            _______________________________________->Parent Component<-_____________________                      
+           |                                             |                                 | 
+           |                                             |                                 |
+           |                                             |                                 | 
+           |                                             |                                 | 
+           |                                             |                                 | 
+  calling parent using                              Calling Parent using Event         Event Bubbling     
+  simple Event                                      with Data                              | 
+           |                                             |                                 |
+           |                                             |                                 | 
+           |                                             |                                 | 
+           |______________________________________Child Component__________________________|                              -->
+   
+    <!-- create and dispatch Events
+    CustomEvent Syntax
+                                            There are default values
+                                              /         |           \
+        new CustomEvent('event name',{bubbles:false, composed:false, details:null})
+                            |                |                     /  1. Event name is defined as show
+                            |                |                    /   2. by default bubble and composed is false but explicitly
+                            |                |                   /         we have made bubbles true for event Bubbling
+                            |                |                  /      3. details is used to pass data with event here im pass "hello"        
+                            |               /                  / 
+        new CustomEvent('show',{bubbles:true, details:'hello'})
+
+     dispatchEvent Syntax
+                    EventTarget.dispatchEvent(eventcreated)         
+                        /                   |                   1. 'this' is the eventTarget
+                       /                    |                   2. dispatchEvent trigger the CustomEvent
+         this.dispatchEvent(new CustomEvent('show',{bubbles:true,details:'hello'}))            
+        
+    Event Name Naming Conventions - only String, No uppercase letters, No spaces, Use underscores to seperate words    
+        
+        -->
+
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+            <div class="slds-modal__header">
+            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <p>Successfully Created!!</p>
+            </div>
+            <div class="slds-modal__footer">
+            <button class="slds-button slds-button_brand" onclick={closeHandler}>Ok</button>
+            </div>
+            </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>       
+</template>
