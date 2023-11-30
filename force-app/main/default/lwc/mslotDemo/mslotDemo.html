@@ -1,0 +1,28 @@
+<template>
+     <!-- Passing Markup into slots
+    1. slots is useful to pass HTML markup into another component.
+    2. <slot></slot> markup is used to catch the HTML passed by parent component
+    3. You can't pass an Aura component into a slot.
+
+    There are two types of Slots
+    Named Slots     When name attribute is defined in slot element <slot name="user"></slot>
+    Unnamed Slots   When a slot without a name attribute <slot></slot> -->
+    <lightning-card title="Slot Demo">
+        <div class="slds-padding-around_medium">
+        <c-mslot-child-demo>
+            <p class="slds-text-color_success" slot="first">My Name is Afrose</p>
+            <p class="slds-text-color_error" slot="second">My Ages is 25</p>
+            <p slot="footer">I am footer</p>
+        </c-mslot-child-demo>
+    </div>
+    <div class="slds-padding-around_medium">
+        <c-mslot-child-demo>
+            <p class="slds-text-color_success" slot="first">My Name is Afrose</p>
+            <p class="slds-text-color_error" slot="second">My Ages is 25</p>
+            <!-- <p slot="footer">I am footer</p> -->
+        </c-mslot-child-demo>
+    </div>
+    </lightning-card>
+
+    
+</template>

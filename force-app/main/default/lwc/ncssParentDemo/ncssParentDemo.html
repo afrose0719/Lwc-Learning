@@ -1,0 +1,17 @@
+<template>
+   <!-- CSS Behaviour in Parent child component
+    CSS behaviour in Parent child component
+    1. Parent CSS cant reach into a child component
+    2. A parent component CSS can style a host element(c-css-child).
+    3. A child Component CSS can reach up and style its own host element
+    4. you can style to a element pass into the slot from the paren component only -->
+
+    <!-- 1. Parent CSS can't reach into a child component ex  -->
+<lightning-card title="CSS Composition">
+    <div class="slds-var-p-around_medium">
+        <h1>Hello im parent component</h1>
+        <c-ncss-child-demo></c-ncss-child-demo>
+    </div>
+</lightning-card>
+    
+</template>

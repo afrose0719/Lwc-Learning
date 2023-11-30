@@ -1,0 +1,19 @@
+<template>
+    <!-- Setter Method
+    This method is use to modified the data coming from parent component.
+    If object is passed as data to setter, to mutate the object we have to create a shallow copy.
+
+    @api 
+    get detail(){
+        return this.userObject;  
+    }
+    set detail(data){
+        let newData =//mutation of logic
+        this.userObject=newData
+    } -->
+    <lightning-card title="Setter Demo Parent">
+        <c-msetter-demo-child detail={userDetails}></c-msetter-demo-child>
+    </lightning-card>
+
+   
+</template>
