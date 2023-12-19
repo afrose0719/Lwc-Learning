@@ -1,0 +1,12 @@
+:host{
+    display: block;
+    background-color: red;
+    color: white;
+}
+
+/* 3. A Child Component CSS can reach up and style its own host element */
+:host(.blue){
+    display: block;
+    background-color: blue;
+    color: white;
+}
